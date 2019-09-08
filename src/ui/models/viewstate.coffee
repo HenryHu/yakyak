@@ -2,7 +2,7 @@ Client = require 'hangupsjs'
 
 merge   = (t, os...) -> t[k] = v for k,v of o when v not in [null, undefined] for o in os; t
 
-{throttle, later, tryparse, autoLauncher} = require '../util'
+{throttle, later, tryparse} = require '../util'
 
 STATES =
     STATE_STARTUP: 'startup'
@@ -306,11 +306,6 @@ module.exports = exp = {
 
     setOpenOnSystemStartup: (open) ->
         return if @openOnSystemStartup == open
-
-        if open
-            autoLauncher.enable()
-        else
-            autoLauncher.disable()
 
         @openOnSystemStartup = open
 
